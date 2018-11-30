@@ -1,0 +1,54 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:ht" x:Class="ht.MainWindow"
+        Title="Mill" Height="600" Width="500" MinHeight="480" MinWidth="350" x:Name="main">
+    <Window.Resources>
+        <RoutedUICommand x:Key="Insert" Text="Insert"/>
+        <RoutedUICommand x:Key="Move" Text="Move"/>
+        <RoutedUICommand x:Key="About" Text="About"/>
+        <RoutedUICommand x:Key="Help" Text="Help"/>
+        <RoutedUICommand x:Key="Settings" Text="Settings"/>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="CloseCmdExecuted"/>
+        <CommandBinding Command="New" Executed="NewCmdExecuted"/>
+        <CommandBinding Command="{StaticResource Insert}" Executed="InsertCmdExecuted" CanExecute="CanInsert"/>
+        <CommandBinding Command="{StaticResource Move}" Executed="MoveCmdExecuted" CanExecute="CanMove"/>
+        <CommandBinding Command="Help" Executed="HelpCmdExecuted"/>
+        <CommandBinding Command="{StaticResource About}" Executed="AboutCmdExecuted"/>
+        <CommandBinding Command="{StaticResource Settings}" Executed="SettingsCmdExecuted"/>
+    </Window.CommandBindings>
+
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="Exit" Command="Close"/>
+                </MenuItem>
+                <MenuItem Header="_Game">
+                    <MenuItem Header="New Game" Command="New"/>
+                    <MenuItem Header="Insert Piece" Command="{StaticResource Insert}"/>
+                    <MenuItem Header="Move Piece" Command="{StaticResource Move}"/>
+                    <!--<MenuItem Header="Remove Piece"/>-->
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem Header="Settings" Command="{StaticResource Settings}"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="How to Play" Command="Help"/>
+                    <MenuItem Header="About" Command="{StaticResource About}"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Button Name="ButtonInsert" Content="Insert" Command="{StaticResource Insert}"/>
+                <Button Name="ButtonMove" Content="Move" Command="{StaticResource Move}"/>
+            </StackPanel>
+        </StackPanel>    
+        <m:MillBoard x:Name="Board" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>      
+    </Grid>
+</Window>

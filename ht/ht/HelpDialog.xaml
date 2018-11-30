@@ -1,0 +1,12 @@
+﻿<Window x:Class="ht.HelpDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Title="How to Play" Height="255.4" Width="424.4">
+    <Grid Margin="10,10,10,10">
+        <StackPanel>
+            <TextBlock Text="To start a new game, select New Game from the Game menu. Players&#10;will take turns in placing their black and white pieces on the board.&#10;When nine pieces of each color have been placed, each may be&#10;moved to any vacant slots which connect to the piece's current location&#10;with a line. When a player places or moves their piece so that they create&#10;a horizontal or vertical line of three, they achieve a mill and may remove&#10;one of their opponent's pieces from the board that is not a part of a mill.&#10;Should all of their pieces be a part of a mill any piece may be removed.&#10;The player who leaves their opponent with less than two remaining pieces&#10;is the victor. If a player has less than three remaining pieces, they may&#10;move them to any vacant slot on the board on their turn. Good luck!"/>
+        </StackPanel>
+    </Grid>
+</Window>
