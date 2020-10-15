@@ -3,6 +3,15 @@ const stream = process.stdin
 // read characters instead of binary
 stream.setEncoding('utf8')
 
+const hexMap = { A: 10, B: 11, C: 12, D: 13, E: 14, F: 15 }
+
+// converts hexadecimal strings to decimal numbers
+// e.g. 2F -> 47
+const hexToDec = hex =>
+    hex.split('').reverse().reduce((sum, digit, pow) =>
+        sum + (hexMap[digit] || digit) * Math.pow(16, pow), 0
+    )
+
 const readChar = () => {
   // read a single character from stream
   let char = stream.read(1)
@@ -21,9 +30,9 @@ const readChar = () => {
       if (!/^[0-9a-fA-F]+$/.test(num)) return '\0'
 
       // convert ascii value to character
-      char = String.fromCharCode(
-        parseInt(num, 16)
-      )
+      char = String.fromCharCode(hexToDec(num))
+  } else if (char === '+') {
+      char = ' '
   }
 
   return char
